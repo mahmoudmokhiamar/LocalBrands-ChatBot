@@ -4,7 +4,6 @@ from urllib.parse import urljoin
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-# Configuration
 STORE_URL = "https://gonative.eg"
 MAIN_SITEMAP = f"{STORE_URL}/sitemap.xml"
 HEADERS = {

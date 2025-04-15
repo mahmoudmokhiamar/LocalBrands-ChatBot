@@ -1,1 +1,9 @@
 .DS_Store
+./venv
+venv/*
+.venv/
+venv
+scraper/collections.txt
+scraper/products.txt
+scraper/products_full.json
+./data

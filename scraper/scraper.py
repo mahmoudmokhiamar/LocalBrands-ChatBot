@@ -1,10 +1,10 @@
 # scraper.py
 import json
 import os
-from bs4 import BeautifulSoup
-from config import BASE_URL, OUTPUT_DIR, OUTPUT_FILE
 from utils import fetch_url
+from bs4 import BeautifulSoup
 from product_parser import extract_product_data
+from config import BASE_URL, OUTPUT_DIR, OUTPUT_FILE
 
 def load_product_urls():
     """Load product URLs from products.txt"""
