@@ -1,4 +1,3 @@
-# local brands chatbot
 ## Scraper Module Overview
 
 ### Core Files
