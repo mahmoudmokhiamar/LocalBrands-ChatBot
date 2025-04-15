@@ -7,3 +7,4 @@ scraper/collections.txt
 scraper/products.txt
 scraper/products_full.json
 ./data
+.DS_Store
