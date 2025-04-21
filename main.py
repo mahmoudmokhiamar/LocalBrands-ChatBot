@@ -1,5 +1,7 @@
 import json
 from recommender.pipeline import ProductRecommendationPipeline
+import warnings
+warnings.filterwarnings("ignore")
 
 def load_data():
     with open("data/products_full.json", "r", encoding="utf-8") as f:
@@ -17,4 +19,4 @@ if __name__ == "__main__":
     response = pipeline.recommend(query)
 
     print("\n🤖 AI Recommendation:\n")
-    print(response)
+    print(response.content.strip())

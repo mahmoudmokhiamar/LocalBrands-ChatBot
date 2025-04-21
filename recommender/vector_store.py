@@ -1,11 +1,14 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain.schema import Document
 
 class ProductVectorDB:
     def __init__(self, persist_path="faiss_index"):
         self.persist_path = persist_path
-        self.embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        self.embedding_model = OpenAIEmbeddings()
         self.vector_store = None
 
     def build_index(self, products):

@@ -10,6 +10,6 @@ class ProductRecommendationPipeline:
     def build_index(self, product_data):
         self.vector_db.build_index(product_data)
 
-    def recommend(self, query_text, top_k=5):
+    def recommend(self, query_text, top_k=10):
         docs = self.vector_db.search(query_text, top_k=top_k)
         return self.rag.generate(query_text, docs)

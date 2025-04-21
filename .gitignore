@@ -8,3 +8,9 @@ scraper/products.txt
 scraper/products_full.json
 ./data
 .DS_Store
+.env
+./faiss_index
+faiss_index
+./faiss_index/*
+faiss_index/*
+faiss_index
