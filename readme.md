@@ -52,3 +52,89 @@
   "sku": null,
   "materials": []
 }
+```
+
+---
+
+## Recommendation System Overview
+
+### Core Pipeline Modules
+
+- **embedder.py**  
+  Generates product embeddings using `OpenAIEmbeddings` for semantic search.
+
+- **vector_store.py**  
+  Uses FAISS to store and query vector representations of product descriptions. Embeddings are generated and indexed for fast similarity retrieval.
+
+- **rag_generator.py**  
+  Uses `OpenAI` (via `ChatOpenAI`) to turn retrieved product snippets into natural language recommendations. The prompt template is designed for fashion-style suggestions.
+
+- **pipeline.py**  
+  High-level interface that loads product data, builds the index, handles queries, and returns LLM-generated responses.
+
+---
+
+### FastAPI Integration
+
+#### Directory: `app/`
+
+- **main.py**  
+  FastAPI entry point that initializes the app and includes the router.
+
+- **api.py**  
+  Defines the `/recommend` POST endpoint. Accepts a query and returns a structured recommendation.
+
+- **models.py**  
+  Pydantic models for request (`RecommendRequest`) and response (`RecommendResponse`) validation and typing.
+
+- **pipeline.py**  
+  Wrapper that loads the LangChain pipeline and executes recommendations on demand. Caches the product index in memory for performance.
+
+---
+
+### API Usage
+
+#### Endpoint: `POST /recommend`
+
+- **Input JSON**:
+  ```json
+  {
+    "query": "low waist jeans"
+  }
+  ```
+
+- **Output JSON**:
+  ```json
+  {
+    "result": "Based on your interest in low waist jeans, here are some recommendations..."
+  }
+  ```
+
+---
+
+### Key Features
+
+- **OpenAI Embeddings**  
+  Uses high-quality semantic vectors for product understanding and search.
+
+- **FAISS Vector Search**  
+  Enables fast nearest-neighbor search over 170+ product descriptions.
+
+- **LLM Augmented Response (RAG)**  
+  GPT-3.5-turbo formats the top results into a human-like fashion recommendation.
+
+- **Terminal & API Support**  
+  Can be queried interactively or via `curl`/frontend clients.
+
+- **Environment-Safe Secrets**  
+  Uses `.env` file with `load_dotenv()` to manage API keys securely.
+
+---
+
+### Example Terminal Usage
+
+```bash
+curl -X POST http://127.0.0.1:8000/recommend \
+  -H "Content-Type: application/json" \
+  -d '{"query": "comfortable black t-shirt"}'
+```
