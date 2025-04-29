@@ -74,9 +74,9 @@
 
 ---
 
-### FastAPI Integration
+## FastAPI Integration
 
-#### Directory: `app/`
+### Directory: `app/`
 
 - **main.py**  
   FastAPI entry point that initializes the app and includes the router.
@@ -89,6 +89,26 @@
 
 - **pipeline.py**  
   Wrapper that loads the LangChain pipeline and executes recommendations on demand. Caches the product index in memory for performance.
+
+---
+
+### Running the FastAPI Server
+
+Use the following command to start the server:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+- `app.main:app` points to the FastAPI app instance.
+- `--reload` enables automatic server reloads on code changes (for development).
+
+After starting the server, open your browser at:
+
+```
+http://127.0.0.1:8000/docs
+```
+to view and test the API via the Swagger UI.
 
 ---
 
